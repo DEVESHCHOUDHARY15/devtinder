@@ -1,0 +1,17 @@
+{
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "\"this is our backend project teach by Akshay Saini Sir\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "nodejs",
+    "expressjs",
+    "mongodb"
+  ],
+  "author": "devesh chaudhary",
+  "license": "ISC"
+}
