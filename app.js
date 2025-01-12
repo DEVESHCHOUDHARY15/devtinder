@@ -1,14 +1,32 @@
-var express = require("express");
-var app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+const express = require("express");
+const app = express();
+const connect = require("./src/config/database");
+const User = require("./src/model/User");
 
-app.use((req, res) => {
-  res.send("Hello, world!");
-});
-app.use("/test", (req, res) => {
-  res.send("Welcome to node");
+const port = process.env.PORT || 3003;
+
+app.use(express.json());
+
+app.post("/first", async (req, res) => {
+  const userModel = new User(req.body);
+  console.log(req.body);
+  try {
+    await userModel.save();
+    res.send("user added successfully");
+  } catch (error) {
+    res.status(400).send("there's some error tO ADDED User");
+  }
 });
 
-const port = 3003;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`); // Server is running on port 3000  when the server starts.  // 3000 is the port number where the server will be running.  // When the server starts, it will log "Server is running on port 3000".  // This message will be displayed in the terminal.  // Note: This code will not run in this environment. It should be run in a local Node.js environment.  // You can run it in your local environment by executing the command "node server.js" in your terminal.  // Once you run the server, you can access it by opening a web browser and navigating to http://localhost:3000.  // The server will respond with "Welcome to node" when you visit http://localhost:3000.  // This is a simple Express.js server that responds with
-});
+connect()
+  .then(() => {
+    console.log("database is connected successfully");
+    app.listen(port, () => {
+      console.log(`server is runnig on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("there's some problem to connect with DB");
+  });

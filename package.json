@@ -4,7 +4,7 @@
   "description": "\"this is our backend project teach by Akshay Saini Sir\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "keywords": [
     "backend",
@@ -15,6 +15,10 @@
   "author": "devesh chaudhary",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "mongodb": "^6.11.0",
+    "mongoose": "^8.9.3",
+    "nodemon": "^3.1.9"
   }
 }
